@@ -16,16 +16,16 @@ FakeNews_Generator_T5 Notebook:
 - Download the 'train' part of the 'ag_news_subset' dataset.
 - Split 'ag_news_subset' into a train set with 60K rows and a generate set with 60K rows
 - Train the T5 model on the train set.
-- Use the 'title' input from the generate set as input for the T5 model to generate a full set with fake news and save as file 'generated_fake_news.csv'
+- Use the 'title' input from the generate set as input for the T5 model to generate a full set with fake news and save as file 't5_generated_fake_news.csv'
 
 FakeNews_Classifier_RoBERTa Notebook:
-- Import the previously generated file 'generated_fake_news.csv' and preprocess to be used for classification. We want to be able to classify real or fake news.
+- Import the previously generated file 't5_generated_fake_news.csv' and preprocess to be used for classification. We want to be able to classify real or fake news.
 - Split that dataset into a 80/20 train and validation set.
 - Train and validate a RoBERTa base model for classification.
 
 FakeNews_Generator_And_Detector Notebook:
 - Download the 'test' part of the 'ag_news_subset'. This dataset contains 7600 rows of data not seen by either the T5 or the RoBERTa model.
-- Use the T5 model to generate fake news based on the new 7600 rows. The generated fake news is stored in file 'generated_fake_news_final.csv'.
+- Use the T5 model to generate fake news based on the new 7600 rows. The generated fake news is stored in file 't5_generated_fake_news_final.csv'.
 - Use the RoBERTa model to classify all the data and detect what is real or fake news.
 
 During my experiments I used T5-small and T5-base models to train and generate the fake news. All classification was done with a RoBERTa base model.
